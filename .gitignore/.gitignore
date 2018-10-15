@@ -1,0 +1,45 @@
+#1.1. How many vowels are there in the names of USA States?
+View(USArrests)
+names(USArrests)
+States<-rownames(USArrests)
+States
+Vowels<-gsub("[aeiouAEIOU]","@",States)
+Vowels
+Vowels<-gsub("@",Vowels)
+Vowels
+library(stringr)
+str_count(Vowels,"@")
+sum(str_count(Vowels,"@"))
+
+
+#2. Visualize the vowels distribution.
+USArrests        
+names(USArrests)   
+States <- rownames(USArrests)
+
+States <- paste(States, collapse = "")
+States
+States <- tolower(strsplit(States, ""))
+States
+States <- States[States %in% letters]
+table(States)
+x <- as.data.frame(table(States))
+x
+names(x)
+
+colnames(x) <- c("letters", "Freq")
+names(x)
+library(dplyr)
+filter(x, letters %in% c("a","e","i","o","u"))
+
+y <- filter(x, letters %in% c("a","e","i","o","u"))
+y
+barplot(y$Freq,axes = TRUE, axisnames = TRUE, xlab = "Vowels", ylab = "frequency")
+barplot(names.arg = c("a", "e", "i", "o", "u"),
+        main = "Visualize the vowels distribution",
+        xlab = "Vowels",
+        ylab = "Count",
+        y$Freq,
+        col = "darkred",
+        horiz = FALSE)
+
