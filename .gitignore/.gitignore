@@ -34,7 +34,6 @@ filter(x, letters %in% c("a","e","i","o","u"))
 
 y <- filter(x, letters %in% c("a","e","i","o","u"))
 y
-barplot(y$Freq,axes = TRUE, axisnames = TRUE, xlab = "Vowels", ylab = "frequency")
 barplot(names.arg = c("a", "e", "i", "o", "u"),
         main = "Visualize the vowels distribution",
         xlab = "Vowels",
